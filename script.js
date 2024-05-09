@@ -1,8 +1,13 @@
+
+document.addEventListener("DOMContentLoaded", function(){
 const formInput = document.querySelector(".form");
 const cityInput = document.querySelector(".city");
 const inputContainer = document.querySelector(".inputContainer");
 const weatherParent = document.querySelector(".weatherParent");
 const apiKey = "42f3594fee81c9422641e286d4a222e7";
+
+
+
 
 formInput.addEventListener("submit", async event => {
 
@@ -31,7 +36,7 @@ async function getWeather(cityInput){
 
     const apiData = await fetch(URL);
 
-    if(apiData.ok == false)
+    if(!apiData.ok)
     {
         throw new Error("Unable to fetch data.")
     }
@@ -43,9 +48,9 @@ function displayWeather(data){
     
     const {name: city, main: {temp}, wind: {speed}}= data;
 
-    inputContainer.display = "none";
+    //inputContainer.display = "none";
     weatherParent.textContent = "";
-    weatherParent.display = "flex";
+    weatherParent.style.display = "flex";
     //weatherParent.
 
     const tempHeader = document.createElement("p");
@@ -59,12 +64,14 @@ function displayWeather(data){
     weatherParent.appendChild(tempHeader);
     weatherParent.appendChild(cityHeader);
     weatherParent.appendChild(windHeader);
-}
+};
 
 function errorAlert(alert){
 
     const errMessage = document.createElement("p");
+
     weatherParent.textContent = alert;
     weatherParent.style.display = "flex";
     weatherParent.appendChild(errMessage);
 };
+});
