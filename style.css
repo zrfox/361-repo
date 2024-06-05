@@ -8,6 +8,13 @@ body{
 
 }
 
+#svg-container{
+    position: absolute;
+    top: -100px;
+    border-right: 500px;
+   
+}
+
 .menuParent{
     display:flex;
     justify-content: center;
